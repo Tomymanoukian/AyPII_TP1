@@ -14,12 +14,16 @@
 
 #define DFT "dft"
 #define IDFT "idft"
+#define FFT "fft"
+#define IFFT "ifft"
 
 using namespace std;
 
 typedef enum type_method {
     METHOD_DFT,
-    METHOD_IDFT
+    METHOD_IDFT,
+    METHOD_FFT,
+    METHOD_IFFT
 } type_method;
 
 struct option_t {
