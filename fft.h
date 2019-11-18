@@ -7,6 +7,8 @@
 #include "vector_t.h"
 
 vector_t fft(vector_t & vector_in);
+vector_t _fft (vector_t & vector_in);
 vector_t ifft(vector_t & vector_in);
+vector_t fill0till_exp2 (vector_t & vector_in, int & nappends);
 
 #endif
