@@ -179,9 +179,13 @@ void opt_output(string const &arg){
 
 void opt_method(string const &arg){
 
-    if(arg.compare(IDFT)==0) {
+    if(arg.compare(IDFT)==0)
         method=METHOD_IDFT;
-    } else if (arg.compare(DFT)!=0 && arg.compare("-")!=0) {
+    else if (arg.compare(FFT)==0)
+        method=METHOD_FFT;
+    else if (arg.compare(IFFT)==0)
+        method=METHOD_IFFT;
+    else if (arg.compare(DFT)!=0 && arg.compare("-")!=0) {
         cout<<METODO_INVALIDO<<endl;
         exit(1);
     }
