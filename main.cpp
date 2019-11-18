@@ -11,7 +11,7 @@
 #include "complejo.h"
 #include "vector_t.h"
 #include "dft.h"
-
+#include "fft.h"
 
 #define MSJ_ERR_VEC_CORRPUTO_1 "El vector de la línea "
 #define MSJ_ERR_VEC_CORRPUTO_2 " se encuentra corrupto, es imposible transformar"
@@ -43,10 +43,15 @@ int main (int argc, char * const argv[])
     size_t num_linea = 1;
 
     //Selecciona cual es el metodo a usar
-    if(method == METHOD_DFT)
-        funcionFourier = dft;
-    else
+
+    if (method == METHOD_FFT)
+    	funcionFourier = fft;
+    else if (method == METHOD_IFFT)
+    	funcionFourier = ifft;
+    else if(method == METHOD_IDFT)
         funcionFourier = idft;
+    else
+    	funcionFourier = dft;
 
     while(!iss->eof()){
 
