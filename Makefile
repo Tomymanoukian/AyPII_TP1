@@ -1,5 +1,6 @@
+objects_fft = complejo.o vector_t.o fft.o
 objects_dft = complejo.o vector_t.o dft.o test_dft.o
-objects_prog = complejo.o vector_t.o dft.o cmdline.o main.o
+objects_prog = complejo.o vector_t.o dft.o fft.o cmdline.o main.o
 objects_diff = complejo.o vector_t.o test_diff.o
 
 programa: $(objects_prog)
@@ -16,6 +17,9 @@ vector_t.o : vector_t.cpp vector_t.h complejo.h
 
 dft.o : dft.cpp dft.h vector_t.h complejo.h
 	g++ -Wall -g -c dft.cpp
+
+fft.o : fft.cpp fft.h vector_t.h complejo.h
+	g++ -Wall -g -c fft.cpp
 
 main.o : main.cpp cmdline.h complejo.h vector_t.h dft.h
 	g++ -Wall -g -c main.cpp
