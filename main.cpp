@@ -44,14 +44,14 @@ int main (int argc, char * const argv[])
 
     //Selecciona cual es el metodo a usar
 
-    if (method == METHOD_FFT)
-    	funcionFourier = fft;
+    if (method == METHOD_DFT)
+    	funcionFourier = dft;
     else if (method == METHOD_IFFT)
     	funcionFourier = ifft;
     else if(method == METHOD_IDFT)
         funcionFourier = idft;
     else
-    	funcionFourier = dft;
+    	funcionFourier = fft;
 
     while(!iss->eof()){
 
