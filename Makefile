@@ -68,7 +68,7 @@ test_programa_dft: programa test_diff.o
 		./test_diff $$t;                          	  \
 		echo Test ok;                                 \
 	done
-	@echo "\nTEST_DFT OK.\n"
+	@echo "\nTEST_FFT OK.\n"
 
 	@rm *.out
 
@@ -85,7 +85,7 @@ test_programa_dft: programa test_diff.o
 		./test_diff $$t;                         	  \
 		echo Test ok;                                 \
 	done
-	@echo "\nTEST_IDFT OK.\n"
+	@echo "\nTEST_IFFT OK.\n"
 
 	@rm *.out
 
