@@ -70,21 +70,19 @@ vector_t ifft (vector_t & vector_in) {
 	return vector_out;
 }
 
-vector_t fill0till_exp2 (vector_t & vector_in) {
+vector_t fill0till_exp2 (vector_t vector_in) {
 
-	vector_t vector_out = vector_in; //pasar el vector directmente por copia y trabajar sobre eso? o trabajar sobre el vector?
-	int largo = vector_out.leng();
+	int largo = vector_in.leng();
 	int i, nappends;
 	complejo cero;
 
-	for (i = 0; pow(2,i) < largo; i++); //calculando la raiz y redondeandola para abajo no encontrás i?
-
+	for (i = 0; pow(2,i) < largo; i++);
 	nappends = pow(2,i) - largo;
 
 	while (nappends > 0){
-		vector_out.append(cero);
+		vector_in.append(cero);
 		nappends--;
 	}
 
-	return vector_out;
+	return vector_in;
 }
