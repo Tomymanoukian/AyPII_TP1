@@ -43,12 +43,12 @@ size_t vector_t::leng() const{
 void vector_t::aumentar_cap(size_t cant){
 
     complejo* aux = new complejo[capacidad + cant];
-    capacidad = cant;
 
     for (size_t i = 0; i < capacidad; i++){
         aux[i] = p[i];
     }
 
+    capacidad = capacidad + cant;
     delete[] p;
     p = aux;
 }

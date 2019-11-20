@@ -7,7 +7,7 @@
 #include "vector_t.h"
 #include "complejo.h"
 
-#define MAX_DIF 1e-14
+#define MAX_DIF 1e-13
 
 
 //compara dos archivos de igual nombre pero diferente extención
