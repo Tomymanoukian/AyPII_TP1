@@ -39,15 +39,15 @@ test_programa_dft: programa test_diff.o
 
 	@echo "\n--------INICIA PRUEBA DE PROGRAMA--------\n"
 
-	@echo "Probando fft sin argumento '-m:' "
-	@set -e; for t in test_dft?; do                   \
+	@echo "Probando fft sin argumento '-m:'\n"
+	@set -e; for t in test_ft?; do                    \
 		echo Aplicando FFT a $$t;                     \
 		./programa -i $$t -o $$t.out;                 \
 	done
 
 	@echo "\n"
 
-	@set -e; for t in test_dft?; do                   \
+	@set -e; for t in test_ft?; do                    \
 		echo Testing: $$t;                            \
 		./test_diff $$t;							  \
 		echo Test ok;                                 \
@@ -55,15 +55,15 @@ test_programa_dft: programa test_diff.o
 
 	@rm *.out
 
-	@echo "\nProbando fft con argumento -m: "
-	@set -e; for t in test_dft?; do                   \
+	@echo "\nProbando fft con argumento -m:\n"
+	@set -e; for t in test_ft?; do                    \
 		echo Aplicando FFT a $$t;                     \
 		./programa -m "fft" -i $$t -o $$t.out;        \
 	done
 
 	@echo "\n"
 
-	@set -e; for t in test_dft?; do                   \
+	@set -e; for t in test_ft?; do                    \
 		echo Testing: $$t;                            \
 		./test_diff $$t;                          	  \
 		echo Test ok;                                 \
@@ -72,15 +72,15 @@ test_programa_dft: programa test_diff.o
 
 	@rm *.out
 
-	@echo "Probando ifft:"
-	@set -e; for t in test_idft?; do                  \
+	@echo "Probando ifft:\n"
+	@set -e; for t in test_ift?; do                   \
 		echo Aplicando IFFT a $$t;                    \
 		./programa -m "ifft" -i $$t -o $$t.out;       \
 	done
 
 	@echo "\n"
 
-	@set -e; for t in test_idft?; do                  \
+	@set -e; for t in test_ift?; do                   \
 		echo Testing: $$t;                            \
 		./test_diff $$t;                         	  \
 		echo Test ok;                                 \
@@ -89,30 +89,30 @@ test_programa_dft: programa test_diff.o
 
 	@rm *.out
 
-	@echo "Probando dft:"
-	@set -e; for t in test_dft?; do                   \
+	@echo "Probando dft:\n"
+	@set -e; for t in test_ft?; do                    \
 		echo Aplicando DFT a $$t;                     \
 		./programa -m "dft" -i $$t -o $$t.out;        \
 	done
 
 	@echo "\n"
 
-	@set -e; for t in test_dft?; do                   \
+	@set -e; for t in test_ft?; do                    \
 		echo Testing: $$t;                            \
 		./test_diff $$t;                          	  \
 		echo Test ok;                                 \
 	done
 	@echo "\nTEST_DFT OK.\n"
 
-	@echo "Probando idft:"
-	@set -e; for t in test_idft?; do                  \
+	@echo "Probando idft:\n"
+	@set -e; for t in test_ift?; do                   \
 		echo Aplicando IDFT a $$t;                    \
 		./programa -m "idft" -i $$t -o $$t.out;       \
 	done
 
 	@echo "\n"
 
-	@set -e; for t in test_idft?; do                  \
+	@set -e; for t in test_ift?; do                   \
 		echo Testing: $$t;                            \
 		./test_diff $$t;                         	  \
 		echo Test ok;                                 \
@@ -129,28 +129,28 @@ test_programa_valgrind: programa
 
 	@echo "PROBANDO FFT:"
 
-	@set -e; for t in test_dft?; do                                           \
+	@set -e; for t in test_ft?; do                                            \
 		echo "\n" testing: $$t "\n";                                          \
 		valgrind --leak-check=full ./programa -m "fft" -i $$t -o $$t.out;     \
 	done
 
 	@echo "\nPROBANDO IFFT:"
 
-	@set -e; for t in test_idft?; do                                          \
+	@set -e; for t in test_ift?; do                                           \
 		echo "\n" testing: $$t "\n";                                          \
 		valgrind --leak-check=full ./programa -m "ifft" -i $$t -o $$t.out;    \
 	done
 
 	@echo "\nPROBANDO DFT:"
 
-	@set -e; for t in test_dft?; do                                           \
+	@set -e; for t in test_ft?; do                                            \
 		echo "\n" testing: $$t "\n";                                          \
 		valgrind --leak-check=full ./programa -m "dft" -i $$t -o $$t.out;     \
 	done
 
 	@echo "PROBANDO IDFT:"
 
-	@set -e; for t in test_idft?; do                                          \
+	@set -e; for t in test_ift?; do                                           \
 		echo "\n" testing: $$t "\n";                                          \
 		valgrind --leak-check=full ./programa -m "idft" -i $$t -o $$t.out;    \
 	done
