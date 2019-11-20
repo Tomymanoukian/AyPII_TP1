@@ -4,7 +4,7 @@ vector_t fft (vector_t & vector_in) {
 
     vector_t vector_out = vector_in; 
 
-    vector_out = fill0till_exp2 (vector_out); //Redimensiona el vector hasta un longitud 2^n
+    fill0till_exp2 (vector_out); //Redimensiona el vector hasta un longitud 2^n
     //esta función no necesita retornar nada si se le pasa el vector por referencia y trabaja sobre eso
     //además nos ahorramos el tiempo del copiado y de la asignación
 
@@ -70,7 +70,7 @@ vector_t ifft (vector_t & vector_in) {
     int i, largo;
     complejo aux;
 
-    vector_out = fill0till_exp2 (vector_out);
+    fill0till_exp2 (vector_out);
     vector_out = _ifft (vector_out);
 
     largo = vector_out.leng();
@@ -136,7 +136,7 @@ vector_t _ifft (vector_t & vector_in) {
     return vector_out;
 }
 
-vector_t fill0till_exp2 (vector_t vector_in) {
+void fill0till_exp2 (vector_t & vector_in) {
 
     int largo = vector_in.leng();
     int i, nappends;
@@ -150,5 +150,5 @@ vector_t fill0till_exp2 (vector_t vector_in) {
         nappends--;
     }
 
-    return vector_in;
+    //return vector_in;
 }
