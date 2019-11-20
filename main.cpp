@@ -30,7 +30,7 @@ std::istream *iss=0;    // Input Stream (clase para manejo de los flujos de entr
 std::ostream *oss=0;    // Output Stream (clase para manejo de los flujos de salida)
 std::fstream ifs;       // Input File Stream (derivada de la clase ifstream que deriva de istream para el manejo de archivos)
 std::fstream ofs;       // Output File Stream (derivada de la clase ofstream que deriva de ostream para el manejo de archivos)
-type_method method;
+type_method method = METHOD_FFT;
 
 int main (int argc, char * const argv[])
 {
