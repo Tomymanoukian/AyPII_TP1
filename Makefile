@@ -45,9 +45,20 @@ test_programa_dft: programa test_diff.o
 		./programa -i $$t -o $$t.out;                 \
 	done
 
+	@set -e; for t in test_fft?; do                    \
+		echo Aplicando FFT a $$t;                     \
+		./programa -i $$t -o $$t.out;                 \
+	done
+
 	@echo "\n"
 
 	@set -e; for t in test_ft?; do                    \
+		echo Testing: $$t;                            \
+		./test_diff $$t;							  \
+		echo Test ok;                                 \
+	done
+
+	@set -e; for t in test_fft?; do                    \
 		echo Testing: $$t;                            \
 		./test_diff $$t;							  \
 		echo Test ok;                                 \

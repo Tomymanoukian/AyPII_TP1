@@ -5,6 +5,8 @@ vector_t fft (vector_t & vector_in) {
     vector_t vector_out = vector_in; 
 
     vector_out = fill0till_exp2 (vector_out); //Redimensiona el vector hasta un longitud 2^n
+    //esta función no necesita retornar nada si se le pasa el vector por referencia y trabaja sobre eso
+    //además nos ahorramos el tiempo del copiado y de la asignación
 
     return _fft (vector_out);
 }
