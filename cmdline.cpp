@@ -127,7 +127,7 @@ int cmdline::do_short_opt(const char *opt, const char *arg){
 void opt_input(string const &arg){
 
     // Si el nombre del archivos es "-", usaremos la entrada
-    // est·ndar. De lo contrario, abrimos un archivo en modo
+    // est√°ndar. De lo contrario, abrimos un archivo en modo
     // de lectura.
     //
     if (arg == "-") {
@@ -154,7 +154,7 @@ void opt_input(string const &arg){
 void opt_output(string const &arg){
 
     // Si el nombre del archivos es "-", usaremos la salida
-    // est·ndar. De lo contrario, abrimos un archivo en modo
+    // est√°ndar. De lo contrario, abrimos un archivo en modo
     // de escritura.
     //
     if (arg == "-") {
@@ -173,7 +173,7 @@ void opt_output(string const &arg){
              << arg
              << "."
              << endl;
-        exit(1);        // EXIT: TerminaciÛn del programa en su totalidad
+        exit(1);        // EXIT: Terminaci√≥n del programa en su totalidad
     }
 }
 
