@@ -1,4 +1,3 @@
-objects_fft = complejo.o vector_t.o fft.o #es necesario esto?
 objects_dft = complejo.o vector_t.o dft.o test_dft.o
 objects_prog = complejo.o vector_t.o dft.o fft.o cmdline.o main.o
 objects_diff = complejo.o vector_t.o test_diff.o
@@ -45,7 +44,7 @@ test_programa_dft: programa test_diff.o
 		./programa -i $$t -o $$t.out;                 \
 	done
 
-	@set -e; for t in test_fft?; do                    \
+	@set -e; for t in test_fft?; do                   \
 		echo Aplicando FFT a $$t;                     \
 		./programa -i $$t -o $$t.out;                 \
 	done
@@ -58,7 +57,7 @@ test_programa_dft: programa test_diff.o
 		echo Test ok;                                 \
 	done
 
-	@set -e; for t in test_fft?; do                    \
+	@set -e; for t in test_fft?; do                   \
 		echo Testing: $$t;                            \
 		./test_diff $$t;							  \
 		echo Test ok;                                 \
@@ -72,6 +71,11 @@ test_programa_dft: programa test_diff.o
 		./programa -m "fft" -i $$t -o $$t.out;        \
 	done
 
+	@set -e; for t in test_fft?; do                   \
+		echo Aplicando FFT a $$t;                     \
+		./programa -m "fft" -i $$t -o $$t.out;        \
+	done
+
 	@echo "\n"
 
 	@set -e; for t in test_ft?; do                    \
@@ -79,12 +83,24 @@ test_programa_dft: programa test_diff.o
 		./test_diff $$t;                          	  \
 		echo Test ok;                                 \
 	done
+
+	@set -e; for t in test_fft?; do                   \
+		echo Testing: $$t;                            \
+		./test_diff $$t;                          	  \
+		echo Test ok;                                 \
+	done
+
 	@echo "\nTEST_FFT OK.\n"
 
 	@rm *.out
 
 	@echo "Probando ifft:\n"
 	@set -e; for t in test_ift?; do                   \
+		echo Aplicando IFFT a $$t;                    \
+		./programa -m "ifft" -i $$t -o $$t.out;       \
+	done
+
+	@set -e; for t in test_ifft?; do                  \
 		echo Aplicando IFFT a $$t;                    \
 		./programa -m "ifft" -i $$t -o $$t.out;       \
 	done
@@ -96,6 +112,13 @@ test_programa_dft: programa test_diff.o
 		./test_diff $$t;                         	  \
 		echo Test ok;                                 \
 	done
+
+	@set -e; for t in test_ifft?; do                  \
+		echo Testing: $$t;                            \
+		./test_diff $$t;                         	  \
+		echo Test ok;                                 \
+	done
+
 	@echo "\nTEST_IFFT OK.\n"
 
 	@rm *.out
@@ -145,9 +168,19 @@ test_programa_valgrind: programa
 		valgrind --leak-check=full ./programa -m "fft" -i $$t -o $$t.out;     \
 	done
 
+	@set -e; for t in test_fft?; do                                            \
+		echo "\n" testing: $$t "\n";                                          \
+		valgrind --leak-check=full ./programa -m "fft" -i $$t -o $$t.out;     \
+	done
+
 	@echo "\nPROBANDO IFFT:"
 
 	@set -e; for t in test_ift?; do                                           \
+		echo "\n" testing: $$t "\n";                                          \
+		valgrind --leak-check=full ./programa -m "ifft" -i $$t -o $$t.out;    \
+	done
+
+	@set -e; for t in test_ifft?; do                                           \
 		echo "\n" testing: $$t "\n";                                          \
 		valgrind --leak-check=full ./programa -m "ifft" -i $$t -o $$t.out;    \
 	done

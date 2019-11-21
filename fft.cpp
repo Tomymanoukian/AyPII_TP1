@@ -76,10 +76,10 @@ vector_t ifft (vector_t & vector_in) {
 
     largo = vector_out.leng();
 
-    for(i=0; i < largo; i++) {        //Este for de acá es un asco, estuve como 2 horas intentando mejorarlo/hacerlo mas lindo. Si les sale, excelente
-        aux = vector_out[i] / largo;  //Lo que busca es recorrer todo el vector out y dividir cada posicion por largo
-        vector_aux.append(aux);       //Idealmente lo hubiera hecho con swap sobre vector_out directamente, pero no paraba de tirarme errores de memoria
-    }                                 //Así que bueno (:
+    for(i=0; i < largo; i++) {        
+        aux = vector_out[i] / largo;  
+        vector_aux.append(aux);       
+    }                                 
 
     return vector_aux;
 }
