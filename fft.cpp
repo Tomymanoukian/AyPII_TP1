@@ -5,17 +5,18 @@ vector_t fft (vector_t & vector_in) {
     vector_t vector_out = vector_in; 
 
     fill0till_exp2 (vector_out); //Redimensiona el vector hasta un longitud 2^n
-    //esta función no necesita retornar nada si se le pasa el vector por referencia y trabaja sobre eso
-    //además nos ahorramos el tiempo del copiado y de la asignación
 
     return _fft (vector_out);
 }
 
 vector_t _fft (vector_t & vector_in) {
 
-    vector_t vector_out, vector_in_par, vector_in_impar, vector_out_par, vector_out_impar;
-    int i, largo;
+    int i, largo = vector_in.leng();
     complejo aux, wn;
+
+    vector_t vector_out(largo);
+    vector_t vector_in_par(largo / 2), vector_in_impar(largo / 2), vector_out_par(largo / 2), vector_out_impar(largo / 2); //crear con tamaño determinado
+
 
     largo = vector_in.leng();
 
@@ -139,16 +140,17 @@ vector_t _ifft (vector_t & vector_in) {
 void fill0till_exp2 (vector_t & vector_in) {
 
     int largo = vector_in.leng();
-    int i, nappends;
+    double exp2 = log2(largo);
+    int nappends, int_exp2 = exp2;
     complejo cero;
 
-    for (i = 0; pow(2,i) < largo; i++);
-    nappends = pow(2,i) - largo;
+    if(exp2 - int_exp2){
 
-    while (nappends > 0){
-        vector_in.append(cero);
-        nappends--;
+        nappends = pow(2, int_exp2 + 1) - largo;
+
+        while (nappends > 0){
+            vector_in.append(cero);
+            nappends--;
+        }
     }
-
-    //return vector_in;
 }
