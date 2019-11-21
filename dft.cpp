@@ -3,7 +3,7 @@
 vector_t dft(vector_t & vector_in){
 
     int k, n, largo_in = vector_in.leng();
-    vector_t vector_out;
+    vector_t vector_out(largo_in);
     complejo aux{};
 
     for (k = 0; k < largo_in; k++)
@@ -22,7 +22,7 @@ vector_t dft(vector_t & vector_in){
 vector_t idft(vector_t & vector_in){
     
     int n, k, largo_in = vector_in.leng();
-    vector_t vector_out;
+    vector_t vector_out(largo_in);
     complejo aux{};
 
     for (n = 0; n < largo_in; n++)
