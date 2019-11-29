@@ -1,6 +1,7 @@
 objects_dft = complejo.o vector_t.o dft.o test_dft.o
 objects_prog = complejo.o vector_t.o dft.o fft.o cmdline.o main.o
 objects_diff = complejo.o vector_t.o test_diff.o
+objects_gener = complejo.o generador_vectores.o
 
 programa: $(objects_prog)
 	g++ -Wall -g -o programa $(objects_prog)
@@ -31,6 +32,11 @@ test_vector.o : test_vector.cpp
 
 test_diff.o: test_diff.cpp complejo.h vector_t.h
 	g++ -Wall -g -c test_diff.cpp
+
+generador_vectores: complejo.o
+	g++ -Wall -g -c generador_vectores.cpp
+	g++ -Wall -g -o generador_vectores $(objects_gener)
+	./generador_vectores
 
 #los archivos de prueba se deben llamar test y un numero
 test_programa_dft: programa test_diff.o 

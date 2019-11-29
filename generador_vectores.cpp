@@ -3,7 +3,7 @@
     using namespace std;
 #include "complejo.h"
 
-#define CANT_CMPLX 100000
+#define CANT_CMPLX 65536
 
 int main(int argc, char const *argv[])
 {
@@ -16,5 +16,5 @@ int main(int argc, char const *argv[])
     }
 
     file.close();
-    return 1;
+    return 0;
 }
