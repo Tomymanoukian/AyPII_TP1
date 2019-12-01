@@ -7,9 +7,9 @@
 #include "vector_t.h"
 #include "dft.h"
 
-vector_t fft (vector_t & vector_in);
+void fft (vector_t & vector_in);
 void _fft (vector_t & vector_in);
-vector_t ifft (vector_t & vector_in);
+void ifft (vector_t & vector_in);
 void _ifft (vector_t & vector_in);
 void fill0till_exp2 (vector_t & vector_in);
 

@@ -1,10 +1,9 @@
 #include "fft.h"
 
-vector_t fft (vector_t & vector) {
+void fft (vector_t & vector) {
 
     fill0till_exp2 (vector); //Redimensiona el vector hasta un longitud 2^n
     _fft(vector);
-    return vector;
 }
 
 void _fft (vector_t & vector) {
@@ -59,9 +58,8 @@ void _fft (vector_t & vector) {
     }
 }
 
-vector_t ifft (vector_t & vector) {
+void ifft (vector_t & vector) {
 
-    vector_t vector_aux;
     int i, largo;
     complejo aux;
 
@@ -70,12 +68,10 @@ vector_t ifft (vector_t & vector) {
 
     largo = vector.leng();
 
-    for(i=0; i < largo; i++) {        
-        aux = vector[i] / largo;  
-        vector_aux.append(aux);       
-    }                                 
-
-    return vector_aux;
+    for (i = 0; i < largo; i++) {
+        aux = vector[i] / largo;
+        vector.swap(aux, i);
+    }
 }
 
 void _ifft (vector_t & vector) {
