@@ -12,9 +12,9 @@ void _fft (vector_t & vector) {
     int i, largo = vector.leng();
     complejo aux, wn;
 
-    vector_t vector_par(largo / 2), vector_impar(largo / 2); //crear con tamaño determinado
-
     if (vector.leng() >= 2) {
+
+        vector_t vector_par(largo / 2), vector_impar(largo / 2); //crear con tamaño determinado
 
         for (i = 0; i < largo; i += 2) { //Crea el vector con los indices par
 
@@ -123,9 +123,9 @@ void _ifft (vector_t & vector) {
     }
 }
 
-void fill0till_exp2 (vector_t & vector_in) {
+void fill0till_exp2 (vector_t & vector) {
 
-    int largo = vector_in.leng();
+    int largo = vector.leng();
     double exp2 = log2(largo);
     int nappends, int_exp2 = exp2;
     complejo cero;
@@ -135,7 +135,7 @@ void fill0till_exp2 (vector_t & vector_in) {
         nappends = pow(2, int_exp2 + 1) - largo;
 
         while (nappends > 0){
-            vector_in.append(cero);
+            vector.append(cero);
             nappends--;
         }
     }
