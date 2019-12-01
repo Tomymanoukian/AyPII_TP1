@@ -39,19 +39,10 @@ int main (int argc, char * const argv[])
 
     vector_t vec_in; 
     vector_t vec_out;
-    vector_t (*funcionFourier)(vector_t &);
     size_t num_linea = 1;
 
-    //Selecciona cual es el metodo a usar
-
-    if (method == METHOD_DFT)
-        funcionFourier = dft;
-    else if (method == METHOD_IFFT)
-        funcionFourier = ifft;
-    else if(method == METHOD_IDFT)
-        funcionFourier = idft;
-    else
-        funcionFourier = fft;
+    if (method != METHOD_DFT && method != METHOD_IFFT && method != METHOD_IDFT)
+        method = METHOD_FFT;
 
     while(!iss->eof()){
 
@@ -75,13 +66,45 @@ int main (int argc, char * const argv[])
             continue;
         }
 
-        vec_out = funcionFourier(vec_in);
+        if (method == METHOD_FFT) {
 
-        *oss << vec_out << endl;
+            fft(vec_in);
 
-        vec_in.clean();
-        vec_out.clean();
-        num_linea++;
+            *oss << vec_in << endl;
+
+            vec_in.clean();
+            num_linea++;
+
+        } else if (method == METHOD_IFFT) {
+            
+            ifft(vec_in);
+
+            *oss << vec_in << endl;
+
+            vec_in.clean();
+            num_linea++;
+        }
+
+        else if (method == METHOD_DFT) {
+
+            vec_out = dft(vec_in);
+
+            *oss << vec_out << endl;
+
+            vec_in.clean();
+            vec_out.clean();
+            num_linea++;
+
+        } else if (method == METHOD_IDFT) {
+
+            vec_out = idft(vec_in);
+
+            *oss << vec_out << endl;
+
+            vec_in.clean();
+            vec_out.clean();
+            num_linea++;
+        }
     }
     
 
