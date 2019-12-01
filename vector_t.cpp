@@ -71,7 +71,7 @@ bool vector_t::swap(complejo &val, int pos){
         p[pos/* - 1*/] = val;
         return true;
     }
-    else if (pos >= 0 && (size_t)pos < tam + 1){
+    else if (pos >= 0 && tam < capacidad &&(size_t)pos < tam + 1){
         p[pos] = val;
         tam++;
         return true;
