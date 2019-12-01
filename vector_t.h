@@ -1,7 +1,7 @@
 #ifndef VECTOR_T__H
 #define VECTOR_T__H
 
-#define VECTOR_DEFAULT_CAPACIDAD_INICIAL 10;
+#define VECTOR_DEFAULT_CAPACIDAD_INICIAL 10
 #define VECTOR_DEFAULT_STEP 5
 
 #include <iostream>
