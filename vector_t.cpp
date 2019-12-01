@@ -15,7 +15,6 @@ vector_t::vector_t(){
 
 vector_t::vector_t(size_t largo){ 
     capacidad = largo;
-    tam = largo;
     p = new complejo[capacidad];
 }
 
