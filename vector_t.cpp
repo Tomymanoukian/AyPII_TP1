@@ -14,12 +14,12 @@ vector_t::vector_t(){
 }
 
 vector_t::vector_t(size_t largo){ 
-
     capacidad = largo;
     p = new complejo[capacidad];
 }
 
 vector_t::vector_t(const vector_t &copia){
+
     tam = copia.tam;
     capacidad = copia.capacidad;
 
@@ -63,18 +63,21 @@ void vector_t::append(complejo &valor)
     tam++;
 }
 
-
-
 bool vector_t::swap(complejo &val, int pos){ 
 
-    if(pos >= 0 && (size_t)pos < tam){
+    if (pos >= 0 && (size_t)pos < tam){
 
-        p[pos - 1] = val;
+        p[pos/* - 1*/] = val;
         return true;
     }
-
-    else
+    else if (pos >= 0 && (size_t)pos < tam + 1){
+        p[pos] = val;
+        tam++;
+        return true;
+    }
+    else {
         return false;
+    }
 }
 
 void vector_t::clean()
