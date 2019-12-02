@@ -123,20 +123,28 @@ void _ifft (vector_t & vector) {
     }
 }
 
-void fill0till_exp2 (vector_t & vector) {
+void fill0till_exp2 (vector_t & vector_in) {
 
-    int largo = vector.leng();
+    int largo = vector_in.leng();
     double exp2 = log2(largo);
-    int nappends, int_exp2 = exp2;
+    int sig_exp2, i, int_exp2 = exp2;
     complejo cero;
 
     if(exp2 - int_exp2){
 
-        nappends = pow(2, int_exp2 + 1) - largo;
+        sig_exp2 = pow(2, int_exp2 + 1);
+        vector_t vector_out(sig_exp2);
 
-        while (nappends > 0){
-            vector.append(cero);
-            nappends--;
+        for (i = 0; i < largo; ++i)
+        {
+            complejo aux = vector_in[i];
+            vector_out.swap(aux, i);
         }
+        while(i < sig_exp2){
+            vector_out.append(cero);
+            i++;
+        }
+
+        vector_in = vector_out;
     }
 }

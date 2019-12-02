@@ -146,20 +146,28 @@ istream & operator >>(istream &is, vector_t &v){ //lee un vector_t de complejos 
     complejo c;
     string line;
 
+
     if(!getline(is, line)){
         return is;
     }
 
     istringstream stream_line(line);
 
+    stream_line.seekg (0, stream_line.end);
+    vector_t vec_line(stream_line.tellg() / 2); //crea un vector de tamaño igual a la mitad de caracteres que posee la línea
+    stream_line.seekg (0, stream_line.beg);
+
+
     while(stream_line >> c){
-        v.append(c);
+        vec_line.append(c);
     }
 
     //En caso de que haya error, cambia estado de is
     if(stream_line.bad()){
         is.clear(ios::badbit);
     }
+
+    v = vec_line;
     
     return is;
 }

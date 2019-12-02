@@ -33,7 +33,7 @@ test_vector.o : test_vector.cpp
 test_diff.o: test_diff.cpp complejo.h vector_t.h
 	g++ -Wall -g -c test_diff.cpp
 
-generador_vectores: complejo.o
+generador_vectores: $(objects_gener)
 	g++ -Wall -g -c generador_vectores.cpp
 	g++ -Wall -g -o generador_vectores $(objects_gener)
 	./generador_vectores
@@ -229,4 +229,4 @@ test-vector_t-memory: complejo.o vector_t.o test_vector.o
 	@rm complejo.o vector_t.o test_vector.o test-vector_t-memory
 
 clean:
-	@rm -f *o *.out programa test_diff
+	@rm -f *o *.out programa test_diff generador_vectores
