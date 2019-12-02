@@ -70,7 +70,7 @@ int main (int argc, char * const argv[])
 
             fft(vec_in);
 
-            *oss << vec_in << endl;
+            *oss << vec_in << "\n";
 
             vec_in.clean();
             num_linea++;
@@ -79,7 +79,7 @@ int main (int argc, char * const argv[])
             
             ifft(vec_in);
 
-            *oss << vec_in << endl;
+            *oss << vec_in << "\n";
 
             vec_in.clean();
             num_linea++;
@@ -89,7 +89,7 @@ int main (int argc, char * const argv[])
 
             vec_out = dft(vec_in);
 
-            *oss << vec_out << endl;
+            *oss << vec_out << "\n";
 
             vec_in.clean();
             vec_out.clean();
@@ -99,7 +99,7 @@ int main (int argc, char * const argv[])
 
             vec_out = idft(vec_in);
 
-            *oss << vec_out << endl;
+            *oss << vec_out << "\n";
 
             vec_in.clean();
             vec_out.clean();
@@ -107,6 +107,7 @@ int main (int argc, char * const argv[])
         }
     }
     
+    cout<<flush;
 
     if(ifs.is_open())
         ifs.close();
