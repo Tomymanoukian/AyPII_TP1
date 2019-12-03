@@ -146,7 +146,6 @@ istream & operator >>(istream &is, vector_t &v){ //lee un vector_t de complejos 
     complejo c;
     string line;
 
-
     if(!getline(is, line)){
         return is;
     }
@@ -154,7 +153,7 @@ istream & operator >>(istream &is, vector_t &v){ //lee un vector_t de complejos 
     istringstream stream_line(line);
 
     stream_line.seekg (0, stream_line.end);
-    vector_t vec_line(stream_line.tellg() / 2); //crea un vector de tamaño igual a la mitad de caracteres que posee la línea
+    vector_t vec_line(stream_line.tellg() / 2 + 1); //crea un vector de tamaño igual a la mitad de caracteres que posee la línea
     stream_line.seekg (0, stream_line.beg);
 
 

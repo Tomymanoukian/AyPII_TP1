@@ -76,13 +76,15 @@ void ifft (vector_t & vector) {
 
 void _ifft (vector_t & vector) {
 
-    vector_t vector_par, vector_impar;
+    //vector_t vector_par, vector_impar;
     int i, largo;
     complejo aux, wn;
 
     largo = vector.leng();
 
     if (vector.leng() >= 2) {
+
+        vector_t vector_par(largo / 2), vector_impar(largo / 2); //crear con tamaño determinado
 
         for (i = 0; i < largo; i += 2) {
 
@@ -99,7 +101,7 @@ void _ifft (vector_t & vector) {
         _ifft (vector_par);
         _ifft (vector_impar);
 
-        vector.clean();
+        //vector.clean();
 
         for (i = 0; i < largo/2; i++) {
 
@@ -107,8 +109,8 @@ void _ifft (vector_t & vector) {
             wn.set_im (sin (2 * M_PI * i / largo));
 
             aux = (vector_par[i] + vector_impar[i] * wn);
-
-            vector.append(aux);
+            //vector.append(aux);
+            vector.swap(aux, i);
         }
 
         for(; i<largo; i++) {
@@ -118,7 +120,8 @@ void _ifft (vector_t & vector) {
 
             aux = (vector_par[i - largo/2] + vector_impar[i - largo/2] * wn);
 
-            vector.append(aux);
+            //vector.append(aux);
+            vector.swap(aux, i);
         }
     }
 }
