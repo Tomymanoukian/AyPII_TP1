@@ -131,7 +131,7 @@ void fill0till_exp2 (vector_t & vector_in) {
     int largo = vector_in.leng();
     double exp2 = log2(largo);
     int sig_exp2, i, int_exp2 = exp2;
-    complejo cero;
+    complejo cero, aux;
 
     if(exp2 - int_exp2){
 
@@ -140,7 +140,7 @@ void fill0till_exp2 (vector_t & vector_in) {
 
         for (i = 0; i < largo; ++i)
         {
-            complejo aux = vector_in[i];
+            aux = vector_in[i];
             vector_out.swap(aux, i);
         }
         while(i < sig_exp2){

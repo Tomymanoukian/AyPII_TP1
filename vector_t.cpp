@@ -109,11 +109,13 @@ vector_t& vector_t::operator = (const vector_t &vec){
     tam = vec.tam;
     capacidad = vec.capacidad;
 
-    delete[] p;
-    p = new complejo[capacidad];
+    if(this != &vec){
+        delete[] p;
+        p = new complejo[capacidad];
 
-    for(size_t i = 0; i < capacidad; i++){
-        p[i] = vec.p[i];
+        for(size_t i = 0; i < capacidad; i++){
+            p[i] = vec.p[i];
+        }
     }
 
     return *this;
