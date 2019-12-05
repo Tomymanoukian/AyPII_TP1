@@ -18,21 +18,17 @@ void _fft (vector_t & vector) {
         for (i = 0, j = 0; i < largo; i += 2, j++) { //Crea el vector con los indices par
 
             aux = vector[i];
-            //vector_par.append(aux);
             vector_par.swap(aux, j);
         }
 
         for (i = 1, j = 0; i < largo; i += 2, j++) { //Crea el vector con los indices impar
             
             aux = vector[i];
-            //vector_impar.append(aux);
             vector_impar.swap(aux,j);
         }
 
         _fft (vector_par);
         _fft (vector_impar);
-
-        //vector.clean();
 
         for (i = 0; i < largo/2; i++) {
 
@@ -41,7 +37,6 @@ void _fft (vector_t & vector) {
 
             aux = vector_par[i] + vector_impar[i] * wn;
 
-            //vector.append(aux);
             vector.swap(aux, i);
         }
 
@@ -52,7 +47,6 @@ void _fft (vector_t & vector) {
 
             aux = vector_par[i - largo/2] + vector_impar[i - largo/2] * wn;
 
-            //vector.append(aux);
             vector.swap(aux, i);
         }
     }
@@ -76,7 +70,6 @@ void ifft (vector_t & vector) {
 
 void _ifft (vector_t & vector) {
 
-    //vector_t vector_par, vector_impar;
     int i, largo;
     complejo aux, wn;
 
@@ -101,15 +94,12 @@ void _ifft (vector_t & vector) {
         _ifft (vector_par);
         _ifft (vector_impar);
 
-        //vector.clean();
-
         for (i = 0; i < largo/2; i++) {
 
             wn.set_re (cos (2 * M_PI * i / largo));
             wn.set_im (sin (2 * M_PI * i / largo));
 
             aux = (vector_par[i] + vector_impar[i] * wn);
-            //vector.append(aux);
             vector.swap(aux, i);
         }
 
@@ -119,8 +109,6 @@ void _ifft (vector_t & vector) {
             wn.set_im (sin (2 * M_PI * i / largo));
 
             aux = (vector_par[i - largo/2] + vector_impar[i - largo/2] * wn);
-
-            //vector.append(aux);
             vector.swap(aux, i);
         }
     }
